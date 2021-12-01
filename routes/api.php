@@ -18,4 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-require __DIR__.'/users.php';
+Route::get('/apartments', function () {
+    return '{"meta":{"page":1,"totalPages":1,"nextPage":null,"prevPage":null},"data":[]}';
+});
+
+// require __DIR__.'/users.php';

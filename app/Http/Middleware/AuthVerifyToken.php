@@ -26,8 +26,6 @@ class AuthVerifyToken
             ],
         ];
 
-        // dd($token);
-
         if (!$user) {
             return response($error, 401);
         }

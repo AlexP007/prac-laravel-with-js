@@ -105,5 +105,10 @@ class UsersController extends Controller
         return $data;
     }
 
+    public function profile()
+    {
+        return 'Страница пользователя';
+    }
+
 }
 

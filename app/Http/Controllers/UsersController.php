@@ -69,15 +69,18 @@ class UsersController extends Controller
         $token = $request->bearerToken();
         $user = User::where('remember_token', $token)->first();
 
-        $error = [
-            'eroros' => [
-                'Authorized' => ['Not authorized']
-            ],
-        ];
+        // dd($token);
 
-        if (!$user) {
-            return response($error, 401);
-        }
+        // $error = [
+        //     'eroros' => [
+        //         'Authorized' => ['Not authorized']
+        //     ],
+        // ];
+
+        // проверяем есть ли такой токен, если есть все хорошо, если нет то вернули 401 ошибку 
+        // if (!$user) {
+        //     return response($error, 401);
+        // }
 
         $validate = $request->validated();
 
@@ -85,7 +88,7 @@ class UsersController extends Controller
 
         $user->name = $validate['name'];
         $user->password = $validate['password'];
-        $user->surname = $validate['surname']; 
+        $user->surname = $validate['surname'];
 
         $token = $user->generateAndSaveToken();
 
@@ -97,11 +100,9 @@ class UsersController extends Controller
                 'name' => $user->name,
                 'surname' => $user->surname,
             ]
-        ];
-
-        // проверяем есть ли такой токен, если есть все хорошо, если нет то вернули 401 ошибку        
+        ];            
         
-        return response($error, 401);
+        return $data;
     }
 
 }

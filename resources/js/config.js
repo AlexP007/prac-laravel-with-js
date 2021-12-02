@@ -1,10 +1,10 @@
-const ROOT_URL = "http://localhost";
+const ROOT_URL = "http://prac.local";
 
 // Apartments urls
 export const URL_ALL_APPS = ROOT_URL + "/api/apartments/all";
 export const URL_ADD_AP = ROOT_URL + "/api/apartments";
-export const getAppUrl = id => ROOT_URL + `/api/apartments/${id}`;
-export const getImgUploadUrl = id => ROOT_URL + `/api/apartments/${id}/image`;
+export const getAppUrl = (id) => ROOT_URL + `/api/apartments/${id}`;
+export const getImgUploadUrl = (id) => ROOT_URL + `/api/apartments/${id}/image`;
 export const URL_ALL_BY_USER = ROOT_URL + `/api/apartments`;
 
 // Users urls

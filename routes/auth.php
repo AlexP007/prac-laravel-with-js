@@ -7,4 +7,4 @@ Route::post('/register', 'UsersController@register');
 
 Route::post('/login', 'UsersController@login');
 
-Route::post('/update', 'UsersController@update')->middleware('auth');
+Route::post('/update', 'UsersController@update')->middleware('verifyToken');

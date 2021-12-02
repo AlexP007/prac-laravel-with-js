@@ -45,9 +45,9 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
-        'auth' => [
-            \App\Http\Middleware\AuthVerifyToken::class,
-        ],
+        // 'auth' => [
+        //     \App\Http\Middleware\AuthVerifyToken::class,
+        // ],
     ];
 
     /**
@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'verifyToken' => \App\Http\Middleware\AuthVerifyToken::class,
     ];
 }

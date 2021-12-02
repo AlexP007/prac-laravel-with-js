@@ -44,16 +44,20 @@ class ApartmentsController extends Controller
         return response($apartment, 204);
     }
 
-    public function getApartment(Request $request, $id)
+    public function get($id)
     {
-        $apartment = Apartment::find($id);   
-        return response($apartment, 200);
+       
+        return ['data' => Apartment::with('images')->find($id)];
+        
     }
 
-    public function patchApartment(Request $request, $id)
+    public function patch(Request $request, $id)
     {
-        $apartment = Apartment::find($id)->update($request->all());
+        $apartment = Apartment::find($id);
+        $apartment->update($request->all());
 
-        return response($apartment, 200);
+        return ['data' => $apartment];
+        
     }
+
 }

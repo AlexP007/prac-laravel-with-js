@@ -42,8 +42,10 @@ Route::post('/apartments', 'ApartmentsController@apartments');
 
 Route::delete('/apartments/{id}', 'ApartmentsController@delete');
 
-Route::get('apartments/{id}', 'ApartmentsController@getApartment');
+Route::get('apartments/{id}', 'ApartmentsController@get');
 
-Route::patch('apartments/{id}', 'ApartmentsController@patchApartment');
+Route::patch('apartments/{id}', 'ApartmentsController@patch');
+
+Route::post('/apartments/{id}/image', 'ImagesController@images');
 
 // require __DIR__.'/users.php';

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -42,7 +43,7 @@ class User extends Authenticatable
     public function getData($user)
     {
         $token = $this->generateAndSaveToken();
-        
+
         $data = [
             'data' => [
                 'api_token' => $token,
@@ -55,4 +56,13 @@ class User extends Authenticatable
 
         return response($data, 201);
     }
+
+    public function setPasswordAttribute($value)
+    {
+        // dd($value);
+        $this->attributes['password'] = Hash::make($value);
+    }
+
+    // Для обновления токена у нас должно быть поле время создания токена, его потом проверяем если больше 15 минут, то токена нет, присвоить null.
+
 }

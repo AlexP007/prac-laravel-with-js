@@ -56,8 +56,11 @@ class ApartmentsController extends Controller
         
     }
 
-    public function all()
-    {
+    public function all(Request $request)
+    {   
+        $priceFrom = 0;
+        $priceFrom = $request->price['from'];
+        $priceTo = $request->price['to'];
 
         $response = [
             'meta' => [
@@ -66,16 +69,14 @@ class ApartmentsController extends Controller
                 'nextPage' => null,
                 'prevPage' => null,
             ],
-    
-            'data' => Apartment::with('images')->get(),
+
+            'data' => Apartment::with('images')
+                ->where('price', '>', $priceFrom)
+                ->where('price', '<', $priceTo)
+                ->get(),
         ];
     
         return $response;
-    }
-
-    public function price(Request $request)
-    {
-        // dd($request);
     }
 
 }

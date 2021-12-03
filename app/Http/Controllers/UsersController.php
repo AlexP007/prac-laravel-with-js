@@ -14,6 +14,7 @@ class UsersController extends Controller
 
         $validate = $request->validated();
         $user = new User($validate);
+
         // $token = $user->generateAndSaveToken();
 
         if($user->save()){

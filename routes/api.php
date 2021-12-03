@@ -22,6 +22,8 @@ use App\Models\User;
 
 Route::get('/apartments/all', 'ApartmentsController@all');
 
+
+
 Route::get('/apartments', function (Request $request) {
 
     $token = $request->bearerToken();

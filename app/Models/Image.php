@@ -16,14 +16,14 @@ class Image extends Model
 
     public function url($path)
     {
-        return sprintf('http://prac.local/storage/%s', $path);
+        return sprintf('http://localhost/storage/%s', $path);
         // артисан положил в паблик сторадж
     }
 
     public function getUrlAttribute($url)
     {
         // dd($url);
-        return sprintf('http://prac.local/storage/%s', $url);
+        return sprintf('http://localhost/storage/%s', $url);
     }
 
 

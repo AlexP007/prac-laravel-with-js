@@ -46,7 +46,7 @@ class ApartmentsController extends Controller
 
     public function get($id)
     {
-       
+        
         return ['data' => Apartment::with('images')->find($id)];
         
     }

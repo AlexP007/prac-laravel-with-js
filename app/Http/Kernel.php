@@ -46,6 +46,10 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'token' => [
+            CheckUserToken::class
+        ]
     ];
 
     /**
@@ -64,12 +68,6 @@ class Kernel extends HttpKernel
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'apartment.user' => CheckUserToken::class,
-        'apartment.put' => CheckUserToken::class,
-        'apartment.patch' => CheckUserToken::class,
-        'apartment.delete' => CheckUserToken::class,
-        'apartment.image' => CheckUserToken::class,
-        'auth.update' => CheckUserToken::class,
+        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class
     ];
 }

@@ -5,5 +5,6 @@
     Route::post('/auth/login', 'App\Http\Controllers\UsersController@auth')
         ->name('auth.login');
     Route::post('/auth/update', 'App\Http\Controllers\UsersController@update')
-        ->name('auth.update');
+        ->name('auth.update')
+        ->middleware('token');
 

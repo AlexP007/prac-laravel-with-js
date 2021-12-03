@@ -13,15 +13,11 @@ class ImagesController extends Controller
     {
 
         $path = $request->file('image')->store('images', 'public');
-        // $apartment = Apartment::find($id);
 
         $image = Image::create([
             'apartment_id' => $id,
             'url' => $path,
-        ]);
-        // сохранить картинку в storage
-        // положить url в БД save($request->all())
-        
+        ]);    
 
         $data = [
             'data' => [

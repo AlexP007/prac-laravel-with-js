@@ -58,11 +58,9 @@ class User extends Authenticatable
     }
 
     public function setPasswordAttribute($value)
+    
     {
-        // dd($value);
         $this->attributes['password'] = Hash::make($value);
     }
-
-    // Для обновления токена у нас должно быть поле время создания токена, его потом проверяем если больше 15 минут, то токена нет, присвоить null.
 
 }

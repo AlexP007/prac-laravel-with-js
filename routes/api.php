@@ -5,24 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Apartment;
 use App\Models\User;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
 Route::get('/apartments/all', 'ApartmentsController@all');
-
-
 
 Route::get('/apartments', function (Request $request) {
 
@@ -53,5 +37,3 @@ Route::get('apartments/{id}', 'ApartmentsController@get');
 Route::patch('apartments/{id}', 'ApartmentsController@patch');
 
 Route::post('/apartments/{id}/image', 'ImagesController@images');
-
-// require __DIR__.'/users.php';

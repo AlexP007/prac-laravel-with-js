@@ -15,21 +15,7 @@ class UsersController extends Controller
         $validate = $request->validated();
         $user = new User($validate);
 
-        // $token = $user->generateAndSaveToken();
-
         if($user->save()){
-            
-            // $data = [
-            //     'data' => [
-            //         'api_token' => $token,
-            //         'email' =>  $user->email,
-            //         'id' =>  $user->id,
-            //         'name' =>  $user->name,
-            //         'surname' =>  $user->surname,
-            //     ]
-            // ];
-
-            // return response($data, 201);
 
             return $user->getData($user);
         }

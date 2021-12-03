@@ -13,30 +13,15 @@ use Illuminate\Support\Facades\DB;
 class UsersController extends Controller
 {
 
-
-
-
-
     public function index()
     {
 
     }
 
-
-
-
-
-
     public function create()
     {
 
     }
-
-
-
-
-
-
 
     public function store(UserStoreRequest $request)
     {

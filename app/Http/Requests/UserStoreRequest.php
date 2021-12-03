@@ -29,12 +29,12 @@ class UserStoreRequest extends FormRequest
             'email'    => 'required',
             'password' => [
                 'required',
-                /*'string',
+                'string',
                 'min:6',
                 'regex:/[a-z]/',
                 'regex:/[A-Z]/',
                 'regex:/[0-9]/',
-                'regex:/[@$!%*#?&]/',*/
+                'regex:/[@$!%*#?&]/',
             ],
         ];
     }

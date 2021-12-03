@@ -8,34 +8,30 @@ use App\Http\Requests\UserPostGeneratedRequest;
 
 class UsersController extends Controller
 {
-    public function create()
-    {
-        return 'Страница регистрации';
-    }
 
     public function register(UserPostGeneratedRequest $request)
     {
 
         $validate = $request->validated();
         $user = new User($validate);
-
-        $token = $user->generateAndSaveToken();
+        // $token = $user->generateAndSaveToken();
 
         if($user->save()){
             
-            $data = [
-                'data' => [
-                    'api_token' => $token,
-                    'email' =>  $user->email,
-                    'id' =>  $user->id,
-                    'name' =>  $user->name,
-                    'surname' =>  $user->surname,
-                ]
-            ];
+            // $data = [
+            //     'data' => [
+            //         'api_token' => $token,
+            //         'email' =>  $user->email,
+            //         'id' =>  $user->id,
+            //         'name' =>  $user->name,
+            //         'surname' =>  $user->surname,
+            //     ]
+            // ];
 
-            return response($data, 201);
+            // return response($data, 201);
+
+            return $user->getData($user);
         }
-         
         
     }
 
@@ -69,22 +65,7 @@ class UsersController extends Controller
         $token = $request->bearerToken();
         $user = User::where('remember_token', $token)->first();
 
-        // dd($token);
-
-        // $error = [
-        //     'eroros' => [
-        //         'Authorized' => ['Not authorized']
-        //     ],
-        // ];
-
-        // проверяем есть ли такой токен, если есть все хорошо, если нет то вернули 401 ошибку 
-        // if (!$user) {
-        //     return response($error, 401);
-        // }
-
         $validate = $request->validated();
-
-        // dd($validate);
 
         $user->name = $validate['name'];
         $user->password = $validate['password'];

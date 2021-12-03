@@ -38,4 +38,21 @@ class User extends Authenticatable
         $this->save();
         return $this->remember_token;
     }
+
+    public function getData($user)
+    {
+        $token = $this->generateAndSaveToken();
+        
+        $data = [
+            'data' => [
+                'api_token' => $token,
+                'email' =>  $user->email,
+                'id' =>  $user->id,
+                'name' =>  $user->name,
+                'surname' =>  $user->surname,
+            ]
+        ];
+
+        return response($data, 201);
+    }
 }

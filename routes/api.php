@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Apartment;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,13 @@ use App\Models\Apartment;
 //     return $request->user();
 // });
 
-Route::get('/apartments', function () {
+Route::get('/apartments/all', 'ApartmentsController@all');
 
-    $apartments = Apartment::all();
-    // dd($apartments);
+Route::get('/apartments', function (Request $request) {
+
+    $token = $request->bearerToken();
+    $user = User::where('remember_token', $token)->first();
+    $apartments = Apartment::where('user_id', $user->id)->get();
 
     $response = [
         'meta' => [
@@ -36,7 +40,7 @@ Route::get('/apartments', function () {
     ];
 
     return $response;
-});
+})->middleware('verifyToken');
 
 Route::post('/apartments', 'ApartmentsController@apartments');
 

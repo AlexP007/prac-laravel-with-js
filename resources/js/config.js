@@ -1,4 +1,4 @@
-const ROOT_URL = "http://localhost";
+const ROOT_URL = "http://prac.localhost";
 
 // Apartments urls
 export const URL_ALL_APPS = ROOT_URL + "/api/apartments/all";
